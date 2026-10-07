@@ -41,8 +41,8 @@ function embedVideo(link, src) {
     iframe.src = src;
     iframe.title = title;
     iframe.loading = 'lazy';
+    // `allow` already grants fullscreen; also setting allowFullscreen logs a console warning
     iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-    iframe.allowFullscreen = true;
     wrapper.append(iframe);
   };
 

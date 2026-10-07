@@ -55,8 +55,8 @@ function loadVideo(panel) {
   iframe.src = wrapper.dataset.src;
   iframe.title = wrapper.dataset.title;
   iframe.loading = 'lazy';
+  // `allow` already grants fullscreen; also setting allowFullscreen logs a console warning
   iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-  iframe.allowFullscreen = true;
   wrapper.append(iframe);
 }
 
@@ -80,7 +80,8 @@ export default function decorate(block) {
 
   const select = (index, focus = false) => {
     panels.forEach((panel, i) => {
-      panel.setAttribute('aria-hidden', i !== index);
+      // native `hidden` removes inactive panels from layout AND the accessibility tree
+      panel.hidden = i !== index;
       buttons[i].setAttribute('aria-selected', i === index);
       buttons[i].tabIndex = i === index ? 0 : -1;
     });
@@ -123,8 +124,15 @@ export default function decorate(block) {
     button.id = `${id}-tab`;
     button.setAttribute('role', 'tab');
     button.setAttribute('aria-controls', panel.id);
-    if (labelCell) button.innerHTML = labelCell.innerHTML;
-    else button.textContent = label;
+    // buttons only allow phrasing content: unwrap the <p> that wrapTextNodes adds to the label
+    const labelSource = labelCell && labelCell.children.length === 1 && labelCell.firstElementChild.tagName === 'P'
+      ? labelCell.firstElementChild
+      : labelCell;
+    if (labelSource && !labelSource.querySelector('p, div, ul, ol, h1, h2, h3, h4, h5, h6')) {
+      button.innerHTML = labelSource.innerHTML;
+    } else {
+      button.textContent = label;
+    }
     button.addEventListener('click', () => select(i));
     button.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') select((i + 1) % rows.length, true);

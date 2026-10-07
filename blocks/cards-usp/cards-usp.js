@@ -23,6 +23,15 @@ export default function decorate(block) {
   });
 
   ul.querySelectorAll('picture > img').forEach((img) => {
+    // SVG icons are vector: rendition/format params (webply, width) add nothing
+    let isSvg = false;
+    try {
+      isSvg = new URL(img.src, window.location.href).pathname.toLowerCase().endsWith('.svg');
+    } catch { /* keep default */ }
+    if (isSvg) {
+      img.loading = 'lazy';
+      return;
+    }
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '96' }]));
   });
 

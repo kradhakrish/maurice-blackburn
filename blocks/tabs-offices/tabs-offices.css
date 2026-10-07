@@ -30,7 +30,7 @@
   margin-top: 24px;
 }
 
-.tabs-offices .tabs-offices-panel[aria-hidden='true'] {
+.tabs-offices .tabs-offices-panel[hidden] {
   display: none;
 }
 
@@ -59,8 +59,10 @@
   padding: 8px 0;
 }
 
+/* decorative chevron: empty alt text keeps it out of link names / the a11y tree */
 .tabs-offices .tabs-offices-links li a::after {
   content: '\203A';
+  content: '\203A' / '';
   flex: 0 0 auto;
 }
 

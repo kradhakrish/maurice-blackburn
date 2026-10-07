@@ -21,15 +21,48 @@ function widgetUrl(widgetPath, widgetName, extension) {
   return `${base}/widgets/${prefix}${widgetName}.${extension}`;
 }
 
+// class of the generic auto-block that scripts.js buildWidgetAutoBlocks() creates
+const AUTO_WIDGET_CLASS = 'widget';
+
+/**
+ * Undoes the generic `/widgets/` auto-block that scripts.js builds around any widget link
+ * whose ancestors lack the generic widget class (this block's own class does not count),
+ * so this block stays the only loader: the nested auto-block is replaced by its link.
+ * @param {Element} block the block element
+ */
+function unwrapAutoWidgets(block) {
+  [...block.querySelectorAll('div')]
+    .filter((el) => el.classList.contains(AUTO_WIDGET_CLASS))
+    .forEach((nested) => {
+      const link = nested.querySelector('a[href]');
+      if (link) nested.replaceWith(link);
+      else nested.remove();
+    });
+}
+
+/**
+ * Hides the block when the widget can't be rendered, so neither the raw widget URL
+ * nor an empty placeholder box is shown.
+ * @param {Element} block the block element
+ */
+function markUnavailable(block) {
+  block.replaceChildren();
+  block.classList.add('widget-reviews-unavailable');
+  block.setAttribute('aria-hidden', 'true');
+}
+
 /**
  * Reviews widget: loads a project widget (HTML + CSS + JS from /widgets/) that renders
  * the third-party reviews carousel. Single cell containing a link to
  * /widgets/<path>/<name>.html; query params on the link are exposed as data attributes.
  * If the link is missing or not a widget link, the authored content is left as-is.
+ * If the widget files are missing (e.g. 404) the block hides itself.
  * @param {Element} block the block element
  */
 export default async function decorate(block) {
-  const source = block.querySelector('a[href]');
+  unwrapAutoWidgets(block);
+
+  const source = block.querySelector('a[href*="/widgets/"]') || block.querySelector('a[href]');
   if (!source) return;
 
   let url;
@@ -48,14 +81,17 @@ export default async function decorate(block) {
     block.dataset[key] = value;
   });
 
+  // the authored link is configuration, not content: never show the raw URL
+  const content = document.createElement('div');
+  content.className = 'widget-reviews-content';
+  block.replaceChildren(content);
+
   try {
     const resp = await fetch(widgetUrl(widgetPath, widgetName, 'html'));
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const html = await resp.text();
-    const content = document.createElement('div');
-    content.className = 'widget-reviews-content';
+    if (!html.trim()) throw new Error('empty widget markup');
     content.innerHTML = html;
-    block.replaceChildren(content);
 
     const cssLoaded = loadCSS(widgetUrl(widgetPath, widgetName, 'css'));
     const decorated = (async () => {
@@ -64,7 +100,8 @@ export default async function decorate(block) {
     })();
     await Promise.all([cssLoaded, decorated]);
   } catch (error) {
+    markUnavailable(block);
     // eslint-disable-next-line no-console
-    console.error(`failed to load widget ${widgetPath}/${widgetName}`, error);
+    console.warn(`widget-reviews: widget ${widgetPath}/${widgetName} unavailable, block hidden`, error.message);
   }
 }

@@ -8,6 +8,11 @@
   overflow: hidden;
 }
 
+.widget-reviews.widget-reviews-unavailable {
+  display: none;
+  min-height: 0;
+}
+
 .widget-reviews iframe {
   width: 100%;
   border: 0;

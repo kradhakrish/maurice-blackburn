@@ -22,7 +22,9 @@ export default function decorate(block) {
 
   const select = (index, focus = false) => {
     panels.forEach((panel, i) => {
-      panel.setAttribute('aria-hidden', i !== index);
+      // native `hidden` removes inactive panels from layout AND the accessibility tree
+      // (aria-hidden + display:none still leaked the links' CSS-generated chevrons)
+      panel.hidden = i !== index;
       buttons[i].setAttribute('aria-selected', i === index);
       buttons[i].tabIndex = i === index ? 0 : -1;
     });
@@ -43,6 +45,12 @@ export default function decorate(block) {
     (labelCell ? cells.slice(1) : cells).forEach((cell) => {
       while (cell.firstChild) panel.append(cell.firstChild);
     });
+    // drop whitespace-only text nodes and empty paragraphs left by authoring
+    [...panel.childNodes].forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE && !node.textContent.trim()) node.remove();
+      else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P'
+        && !node.textContent.trim() && !node.querySelector('img, picture, a')) node.remove();
+    });
     panel.querySelectorAll('ul, ol').forEach((list) => list.classList.add('tabs-offices-links'));
 
     const button = document.createElement('button');
@@ -51,8 +59,15 @@ export default function decorate(block) {
     button.id = `${id}-tab`;
     button.setAttribute('role', 'tab');
     button.setAttribute('aria-controls', panel.id);
-    if (labelCell) button.innerHTML = labelCell.innerHTML;
-    else button.textContent = label;
+    // buttons only allow phrasing content: unwrap the <p> that wrapTextNodes adds to the label
+    const labelSource = labelCell && labelCell.children.length === 1 && labelCell.firstElementChild.tagName === 'P'
+      ? labelCell.firstElementChild
+      : labelCell;
+    if (labelSource && !labelSource.querySelector('p, div, ul, ol, h1, h2, h3, h4, h5, h6')) {
+      button.innerHTML = labelSource.innerHTML;
+    } else {
+      button.textContent = label;
+    }
     button.addEventListener('click', () => select(i));
     button.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') select((i + 1) % rows.length, true);
