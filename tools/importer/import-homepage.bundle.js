@@ -46,6 +46,7 @@ var CustomImportScript = (() => {
     const heading = element.querySelector(".pb-title, h1, h2");
     const subtitle = element.querySelector(".pb-subtitle, .cmp-page-banner-content p");
     const image = element.querySelector("img.desktop-image") || element.querySelector(".image-container img, img.pb-image, img");
+    const mobileImage = element.querySelector("img.mobile-image");
     const ctaContainer = element.querySelector(".pb-buttons--desktop") || element.querySelector(".pb-buttons");
     const ctaSources = ctaContainer ? [...ctaContainer.querySelectorAll("a")] : [];
     if (!heading && !subtitle) {
@@ -76,7 +77,11 @@ var CustomImportScript = (() => {
       contentCell.push(p);
     });
     const cells = [];
-    if (image) cells.push([image]);
+    if (image) {
+      const imageCell = [image];
+      if (mobileImage && mobileImage !== image && mobileImage.getAttribute("src")) imageCell.push(mobileImage);
+      cells.push([imageCell]);
+    }
     cells.push([contentCell]);
     const block = WebImporter.Blocks.createBlock(document, { name: "hero-banner", cells });
     element.replaceWith(block);
