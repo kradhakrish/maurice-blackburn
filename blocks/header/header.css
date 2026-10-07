@@ -81,7 +81,7 @@ header .nav-brand p {
 
 header .nav-brand img {
   width: 120px;
-  height: auto;
+  height: 38px;
 }
 
 /* hamburger */
@@ -389,11 +389,12 @@ header .nav-overlay[hidden] {
 
   header .nav-main {
     height: 94px;
-    padding: 0 52px;
+    padding: 0 36px 0 52px;
   }
 
   header .nav-brand img {
     width: 200px;
+    height: 64px;
   }
 
   header .nav-hamburger {
@@ -416,7 +417,7 @@ header .nav-overlay[hidden] {
 
   header .nav-trigger {
     width: auto;
-    padding: 6px 42px 6px 6px;
+    padding: 8px 42px 8px 6px;
     white-space: nowrap;
   }
 
@@ -461,7 +462,7 @@ header .nav-overlay[hidden] {
     display: block;
     box-sizing: border-box;
     width: 100%;
-    padding: 6px 38px 6px 16px;
+    padding: 8px 38px 8px 16px;
     border-left: 2px solid transparent;
     line-height: 24px;
   }
@@ -541,7 +542,7 @@ header .nav-overlay[hidden] {
 
   header .nav-group-overview,
   header .nav-group-links a {
-    padding: 6px 16px;
+    padding: 8px 16px;
   }
 
   header .nav-group-links {
