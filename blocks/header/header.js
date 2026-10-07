@@ -325,7 +325,7 @@ export default async function decorate(block) {
   if (cta) {
     cta.className = 'nav-cta';
     cta.querySelectorAll('strong, em').forEach((s) => s.replaceWith(...s.childNodes));
-    cta.querySelectorAll('a').forEach((a) => { a.className = 'button'; });
+    cta.querySelectorAll('a').forEach((a) => { a.className = 'button primary'; });
     menu.append(cta);
   }
   main.append(menu, hamburger);
@@ -405,6 +405,6 @@ export default async function decorate(block) {
   wrapper.className = 'nav-wrapper';
   wrapper.append(nav);
   if (search) wrapper.append(search.panel);
-  wrapper.append(overlay);
-  block.append(wrapper);
+  // overlay sits outside the wrapper so it dims the page but not the header
+  block.append(wrapper, overlay);
 }

@@ -29,8 +29,6 @@
   --heading-font-size-s: 18px;
   --heading-font-size-xs: 16px;
 
-  /* nav height */
-  --nav-height: 64px;
 }
 
 /* fallback fonts */
@@ -41,6 +39,13 @@
   descent-override: 31.1%;
   line-gap-override: 8.9%;
   src: local('Arial');
+}
+
+@media (width >= 1200px) {
+  :root {
+    /* utility bar + main bar */
+    --nav-height: 133px;
+  }
 }
 
 @media (width >= 900px) {
