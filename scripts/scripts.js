@@ -59,7 +59,7 @@ async function loadFonts() {
 function buildWidgetAutoBlocks(main) {
   const widgetLinks = [...main.querySelectorAll('a[href*="/widgets/"]')];
   widgetLinks.forEach((link) => {
-    if (link.closest('.widget')) return;
+    if (link.closest('.widget, .widget-reviews')) return;
     const newLink = link.cloneNode(true);
     const widgetBlock = buildBlock('widget', { elems: [newLink] });
     const p = link.closest('p');
