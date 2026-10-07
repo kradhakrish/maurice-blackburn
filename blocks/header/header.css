@@ -293,7 +293,7 @@ header .nav-overlay[hidden] {
     display: flex;
     justify-content: flex-end;
     align-items: stretch;
-    height: 38px;
+    height: 39px;
     padding: 0 max(70px, calc((100% - 1440px) / 2 + 70px)) 0 0;
     border-bottom: 1px solid rgb(70 28 47 / 20%);
   }
@@ -487,7 +487,7 @@ header .nav-overlay[hidden] {
     display: none;
   }
 
-  header .nav-panel-promo p {
+  header .nav-panel-promo > * {
     margin: 0;
   }
 
