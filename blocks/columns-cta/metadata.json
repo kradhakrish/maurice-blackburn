@@ -1,0 +1,26 @@
+{
+  "variantName": "columns-cta",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "contact-cta",
+    "imagePattern": "noimg",
+    "structure": "heading + text + 3 buttons"
+  },
+  "contentPattern": "Each row has N cells; each cell holds default content (text, images, links); rows share column count. 1 row x 2 cells: [H2, paragraph] | [3 button links]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mauriceblackburn.com.au/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07T12:11:26.934Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

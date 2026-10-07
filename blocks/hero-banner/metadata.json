@@ -1,0 +1,26 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "medium",
+    "purpose": "page-hero",
+    "imagePattern": "split-right",
+    "structure": "h1 + subtitle + cta + image"
+  },
+  "contentPattern": "Row 1: image (optional); Row 2: heading, subheading, CTA link. Photo authored in image row; split layout (text left, image right) via CSS",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mauriceblackburn.com.au/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07T12:08:08.498Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

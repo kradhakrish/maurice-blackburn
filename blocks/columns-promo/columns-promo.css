@@ -1,0 +1,48 @@
+.columns-promo > .columns-promo-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-promo > .columns-promo-row + .columns-promo-row {
+  margin-top: 32px;
+}
+
+.columns-promo .columns-promo-col > :first-child {
+  margin-top: 0;
+}
+
+.columns-promo .columns-promo-col > :last-child {
+  margin-bottom: 0;
+}
+
+.columns-promo .columns-promo-media {
+  line-height: 0;
+}
+
+.columns-promo .columns-promo-media a {
+  display: block;
+}
+
+.columns-promo .columns-promo-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (width >= 900px) {
+  .columns-promo > .columns-promo-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .columns-promo .columns-promo-col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .columns-promo .columns-promo-media {
+    flex: 0 1 45%;
+  }
+}

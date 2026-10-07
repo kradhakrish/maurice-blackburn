@@ -1,0 +1,26 @@
+{
+  "variantName": "widget-reviews",
+  "baseBlock": "widget",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "medium",
+    "purpose": "google-reviews",
+    "imagePattern": "noimg",
+    "structure": "third-party widget"
+  },
+  "contentPattern": "Single cell containing link to /widgets/<path>/<name>.html (project widget block)",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mauriceblackburn.com.au/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07T12:11:10.556Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

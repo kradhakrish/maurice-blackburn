@@ -1,0 +1,54 @@
+.columns-cta > .columns-cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-cta > .columns-cta-row + .columns-cta-row {
+  margin-top: 32px;
+}
+
+.columns-cta .columns-cta-col > :first-child {
+  margin-top: 0;
+}
+
+.columns-cta .columns-cta-col > :last-child {
+  margin-bottom: 0;
+}
+
+.columns-cta .columns-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.columns-cta .columns-cta-actions > p {
+  margin: 0;
+}
+
+.columns-cta .columns-cta-actions a {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+@media (width >= 900px) {
+  .columns-cta > .columns-cta-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .columns-cta .columns-cta-text {
+    flex: 1 1 60%;
+    min-width: 0;
+  }
+
+  .columns-cta .columns-cta-actions {
+    flex: 0 1 360px;
+  }
+}

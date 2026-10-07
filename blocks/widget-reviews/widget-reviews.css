@@ -1,0 +1,14 @@
+.widget-reviews {
+  width: 100%;
+  min-height: 200px;
+}
+
+.widget-reviews .widget-reviews-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+.widget-reviews iframe {
+  width: 100%;
+  border: 0;
+}

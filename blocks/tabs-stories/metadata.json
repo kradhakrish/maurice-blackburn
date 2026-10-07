@@ -1,0 +1,26 @@
+{
+  "variantName": "tabs-stories",
+  "baseBlock": "tabs",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "medium",
+    "purpose": "client-stories",
+    "imagePattern": "video-left",
+    "structure": "pill tabs + video + story text"
+  },
+  "contentPattern": "Each row = 1 tab: [tab label] | [tab content]. Tab content = Vimeo video link, H2 title, paragraphs, quote, link",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mauriceblackburn.com.au/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07T12:10:49.102Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

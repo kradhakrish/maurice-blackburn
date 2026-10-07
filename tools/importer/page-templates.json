@@ -1,0 +1,267 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.mauriceblackburn.com.au/"
+      ],
+      "representativeUrl": "https://www.mauriceblackburn.com.au/",
+      "description": "Homepage",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".cmp-page-banner > .cmp-page-banner-container"
+          ]
+        },
+        {
+          "name": "cards-usp",
+          "instances": [
+            ".cmp-page-banner > .cmp-usp-banner"
+          ]
+        },
+        {
+          "name": "cards-icon-tile",
+          "instances": [
+            "#serviceTile > .customPadding > .aem-Grid"
+          ]
+        },
+        {
+          "name": "columns-contact",
+          "instances": [
+            "#contact"
+          ]
+        },
+        {
+          "name": "columns-video",
+          "instances": [
+            "#plaintiff .aem-Grid > .video"
+          ]
+        },
+        {
+          "name": "columns-stats",
+          "instances": [
+            "#classAction > .customPadding > .aem-Grid"
+          ]
+        },
+        {
+          "name": "tabs-stories",
+          "instances": [
+            "#clients .tabs"
+          ]
+        },
+        {
+          "name": "widget-reviews",
+          "instances": [
+            "#fiveStar > .customPadding > .aem-Grid > .embed"
+          ]
+        },
+        {
+          "name": "columns-cta",
+          "instances": [
+            ".AT_placeholder:not(.AT_placeholder ~ .AT_placeholder) #full-width-cta:not(#full-width-cta *)"
+          ]
+        },
+        {
+          "name": "columns-promo",
+          "instances": [
+            ".full-width-background-extend:has(a.btn-inverse[href*=\"free-claim-check\"]) > div > .aem-Grid"
+          ]
+        },
+        {
+          "name": "tabs-offices",
+          "instances": [
+            ".office-listing .right-container"
+          ]
+        }
+      ],
+      "urlPattern": "/",
+      "sections": [
+        {
+          "id": "rc1c2",
+          "name": "Hero banner with USP strip",
+          "selector": [
+            ".herobanner",
+            ".pagebanner"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner",
+            "cards-usp"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc1c3c2",
+          "name": "Practice-area quick links",
+          "selector": [
+            "#serviceTile"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-icon-tile"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc1c3c6",
+          "name": "Contact pitch with callback form",
+          "selector": [
+            ".full-width-background-extend:has(> .customPadding #contact)",
+            "#cta",
+            "#container-d3e356a43d"
+          ],
+          "style": "dark",
+          "blocks": [
+            "columns-contact"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc1c3c8",
+          "name": "Plaintiff law firm intro with video",
+          "selector": [
+            "#plaintiff"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-video"
+          ],
+          "defaultContent": [
+            "#plaintiff > .customPadding > .aem-Grid > .cmp-text"
+          ]
+        },
+        {
+          "id": "rc1c3c9",
+          "name": "Class actions stat and recent list",
+          "selector": [
+            "#classAction"
+          ],
+          "style": "beige",
+          "blocks": [
+            "columns-stats"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc1c3c10",
+          "name": "Client stories",
+          "selector": [
+            "#clients"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-stories"
+          ],
+          "defaultContent": [
+            "#clients > .customPadding > .aem-Grid > .cmp-text"
+          ]
+        },
+        {
+          "id": "rc1c3c11c1",
+          "name": "Google reviews",
+          "selector": [
+            "#fiveStar > .customPadding",
+            "#google-review"
+          ],
+          "style": null,
+          "blocks": [
+            "widget-reviews"
+          ],
+          "defaultContent": [
+            "#fiveStar > .customPadding .cmp-text > .cmp-text"
+          ]
+        },
+        {
+          "id": "rc1c3c11c2",
+          "name": "Easy ways to get in touch CTA band",
+          "selector": [
+            ".AT_placeholder:not(.AT_placeholder ~ .AT_placeholder)",
+            "#fiveStar > .customPadding + .AT_placeholder"
+          ],
+          "style": "grey",
+          "blocks": [
+            "columns-cta"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc1c3c12",
+          "name": "Free claim check promo",
+          "selector": [
+            ".full-width-background-extend:has(a.btn-inverse[href*=\"free-claim-check\"])",
+            "#container-45bf1692a1"
+          ],
+          "style": "dark",
+          "blocks": [
+            "columns-promo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc1c3c14",
+          "name": "Office locator by state",
+          "selector": [
+            ".cmp-experiencefragment--office-locator-default-master",
+            ".office-listing-container"
+          ],
+          "style": "lavender",
+          "blocks": [
+            "tabs-offices"
+          ],
+          "defaultContent": [
+            ".office-listing .left-container"
+          ]
+        },
+        {
+          "id": "rc1c3c15",
+          "name": "Conditions apply disclaimer",
+          "selector": [
+            ".body-content .aem-Grid > .cmp-text:has(a[href*=\"/about-us/fees/\"] > sup)",
+            "#text-4736f6ad8e"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".body-content .aem-Grid > .cmp-text:has(a[href*=\"/about-us/fees/\"] > sup)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "medical-injury",
+      "urls": [
+        "https://www.mauriceblackburn.com.au/injury-illness/medical-injury/medical-negligence-lawyers-sydney/",
+        "https://www.mauriceblackburn.com.au/wills/contest-a-will-sydney-nsw/",
+        "https://www.mauriceblackburn.com.au/injury-illness/disease-exposure/asbestos-diseases/mesothelioma-lawyers-nsw/"
+      ],
+      "representativeUrl": "https://www.mauriceblackburn.com.au/injury-illness/medical-injury/medical-negligence-lawyers-sydney/",
+      "description": "To be named in naming step",
+      "blocks": [],
+      "urlPattern": "/*"
+    },
+    {
+      "name": "superannuation-insurance-claims",
+      "urls": [
+        "https://www.mauriceblackburn.com.au/injury-illness/superannuation-insurance-claims/total-permanent-disability-sydney/"
+      ],
+      "representativeUrl": "https://www.mauriceblackburn.com.au/injury-illness/superannuation-insurance-claims/total-permanent-disability-sydney/",
+      "description": "To be named in naming step",
+      "blocks": [],
+      "urlPattern": "/injury-illness/superannuation-insurance-claims/*"
+    },
+    {
+      "name": "nsw",
+      "urls": [
+        "https://www.mauriceblackburn.com.au/our-offices/nsw/sydney/"
+      ],
+      "representativeUrl": "https://www.mauriceblackburn.com.au/our-offices/nsw/sydney/",
+      "description": "To be named in naming step",
+      "blocks": [],
+      "urlPattern": "/our-offices/nsw/*"
+    }
+  ]
+}

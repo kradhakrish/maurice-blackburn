@@ -1,0 +1,26 @@
+{
+  "variantName": "cards-icon-tile",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "medium",
+    "purpose": "practice-area-links",
+    "imagePattern": "icon-top",
+    "structure": "icon + heading link"
+  },
+  "contentPattern": "Each row = 1 card with 2 cells: [image/icon] | [heading, optional text, optional CTA link]. Card = [icon] | [h3 linked to practice area]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mauriceblackburn.com.au/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07T12:09:09.184Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

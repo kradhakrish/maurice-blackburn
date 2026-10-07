@@ -1,0 +1,47 @@
+.cards-usp > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cards-usp > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cards-usp .cards-usp-icon {
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.cards-usp .cards-usp-icon img,
+.cards-usp .cards-usp-icon .icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.cards-usp .cards-usp-text > * {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .cards-usp > ul {
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px 32px;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-usp > ul {
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+  }
+}

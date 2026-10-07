@@ -1,0 +1,26 @@
+{
+  "variantName": "cards-usp",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "usp-strip",
+    "imagePattern": "icon-inline",
+    "structure": "icon + text"
+  },
+  "contentPattern": "Each row = 1 card with 2 cells: [image/icon] | [heading, optional text, optional CTA link]. Card = [tick icon] | [text]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mauriceblackburn.com.au/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07T12:08:46.863Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

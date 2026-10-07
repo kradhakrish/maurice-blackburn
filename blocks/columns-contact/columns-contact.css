@@ -1,0 +1,75 @@
+.columns-contact > .columns-contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.columns-contact > .columns-contact-row + .columns-contact-row {
+  margin-top: 32px;
+}
+
+.columns-contact .columns-contact-col > :first-child {
+  margin-top: 0;
+}
+
+.columns-contact .columns-contact-col > :last-child {
+  margin-bottom: 0;
+}
+
+.columns-contact .columns-contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.columns-contact .columns-contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.columns-contact .columns-contact-list li + li {
+  margin-top: 12px;
+}
+
+.columns-contact .columns-contact-list .icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+}
+
+.columns-contact .columns-contact-card {
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.columns-contact img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (width >= 900px) {
+  .columns-contact > .columns-contact-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
+  }
+
+  .columns-contact .columns-contact-col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .columns-contact.columns-contact-2-cols .columns-contact-text {
+    flex: 1 1 55%;
+  }
+
+  .columns-contact.columns-contact-2-cols .columns-contact-card {
+    flex: 1 1 45%;
+  }
+}
+
+@media (width >= 1200px) {
+  .columns-contact .columns-contact-card {
+    padding: 32px;
+  }
+}

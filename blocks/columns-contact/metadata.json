@@ -1,0 +1,26 @@
+{
+  "variantName": "columns-contact",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "dense",
+    "purpose": "contact-form",
+    "imagePattern": "icon-list",
+    "structure": "heading + text + tick list + form"
+  },
+  "contentPattern": "Each row has N cells; each cell holds default content (text, images, links); rows share column count. 1 row x 2 cells: [H2, H3, paragraphs, tick list] | [H3 \"Request a FREE call\", form link]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mauriceblackburn.com.au/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07T12:09:30.371Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}

@@ -1,0 +1,26 @@
+{
+  "variantName": "tabs-offices",
+  "baseBlock": "tabs",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "lavender",
+    "density": "dense",
+    "purpose": "office-locator",
+    "imagePattern": "noimg",
+    "structure": "pill tabs + link list"
+  },
+  "contentPattern": "Each row = 1 tab: [tab label] | [tab content]. Tab content = list of office links (or paragraph with phone link)",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mauriceblackburn.com.au/",
+        "instanceId": null,
+        "screenshot": "migration-work/screenshot.png"
+      }
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-07T12:12:08.451Z"
+  },
+  "options": [],
+  "memberVariantIds": []
+}
