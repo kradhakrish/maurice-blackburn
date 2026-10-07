@@ -13,6 +13,16 @@ const ownText = (el) => [...el.childNodes]
   .join('')
   .trim();
 
+// authors may wrap list item content in <p> and/or <strong>
+const itemLink = (li) => li.querySelector(':scope > a, :scope > p > a, :scope > strong > a, :scope > p > strong > a');
+
+const itemLabel = (li) => {
+  const link = itemLink(li);
+  if (link) return link.textContent.trim();
+  const p = li.querySelector(':scope > p');
+  return p ? p.textContent.trim() : ownText(li);
+};
+
 /**
  * Fetches the nav fragment: /content (local preview) first, then the site root (DA/EDS).
  * Relative image paths are resolved against the fragment URL so they work on any page.
@@ -67,7 +77,7 @@ function buildUtility(section) {
         label.className = 'nav-select';
         const name = document.createElement('span');
         name.className = 'nav-visually-hidden';
-        name.textContent = ownText(li) || options[0];
+        name.textContent = itemLabel(li) || options[0];
         const select = document.createElement('select');
         const key = `mb-nav-${name.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
         options.forEach((text) => select.append(new Option(text, text)));
@@ -98,7 +108,21 @@ function buildUtility(section) {
       if (link && link.getAttribute('href').startsWith('tel:')) {
         const phone = document.createElement('div');
         phone.className = 'nav-phone nav-highlight';
-        link.querySelectorAll('img').forEach((img) => { img.alt = ''; img.width = 16; img.height = 16; });
+        // the number may sit beside the link rather than inside it
+        link.append(...[...el.childNodes].filter((n) => n !== link));
+        link.querySelectorAll('strong').forEach((s) => s.replaceWith(...s.childNodes));
+        link.querySelectorAll('img').forEach((img) => {
+          if (!/^https?:/.test(img.src)) {
+            img.remove();
+            return;
+          }
+          img.alt = '';
+          img.width = 16;
+          img.height = 16;
+        });
+        if (!link.textContent.trim()) {
+          link.append(link.getAttribute('href').replace(/^tel:/, ''));
+        }
         phone.append(link);
         bar.append(phone);
       } else if (link) {
@@ -161,7 +185,7 @@ function buildPanel(li, promo) {
   const inner = document.createElement('div');
   inner.className = 'nav-panel-inner';
 
-  const headingLink = li.querySelector(':scope > a');
+  const headingLink = itemLink(li);
   if (headingLink) {
     const heading = headingLink.cloneNode(true);
     heading.className = 'nav-panel-heading';
@@ -199,7 +223,7 @@ function buildPanel(li, promo) {
   const items = li.querySelector(':scope > ul');
   [...(items ? items.children : [])].forEach((item) => {
     const row = document.createElement('li');
-    const link = item.querySelector(':scope > a');
+    const link = itemLink(item);
     const sub = item.querySelector(':scope > ul');
     if (link && sub) {
       const button = document.createElement('button');
@@ -243,8 +267,8 @@ function buildSections(navSection, promos) {
   const promoFor = (label) => promos.find((p) => p.querySelector('h1, h2, h3').textContent.trim() === label);
 
   [...navSection.querySelectorAll(':scope > ul > li')].forEach((li) => {
-    const headingLink = li.querySelector(':scope > a');
-    const label = (headingLink ? headingLink.textContent : ownText(li)).trim();
+    const headingLink = itemLink(li);
+    const label = itemLabel(li);
     const item = document.createElement('li');
     item.className = 'nav-section';
     if (!li.querySelector(':scope > ul')) {

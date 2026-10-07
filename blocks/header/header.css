@@ -382,6 +382,14 @@ header .nav-overlay[hidden] {
     height: 16px;
   }
 
+  header .nav-phone a:not(:has(img))::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-color: currentcolor;
+    mask: url('../../icons/phone.svg') center / contain no-repeat;
+  }
+
   header .nav-main {
     height: auto;
     padding: 15px 36px 15px 52px;
