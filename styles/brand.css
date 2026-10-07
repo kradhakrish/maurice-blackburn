@@ -1,0 +1,32 @@
+/* Maurice Blackburn brand tokens (extracted from www.mauriceblackburn.com.au) */
+:root {
+  /* headings use Poppins as a stand-in for the licensed "Reader" typeface */
+  --heading-font-family: poppins, poppins-fallback, arial, sans-serif;
+  --body-font-family: poppins, poppins-fallback, arial, sans-serif;
+
+  /* colors */
+  --background-color: #f8f5f0;
+  --text-color: #461c2f;
+  --link-color: #cc2e57;
+  --link-hover-color: #461c2f;
+  --brand-plum: #461c2f;
+  --brand-red: #da333b;
+  --brand-red-hover: #b8262e;
+  --brand-magenta: #cc2e57;
+  --brand-lavender: #ded1d8;
+  --brand-white: #fff;
+  --brand-gradient: linear-gradient(90.79deg, #75264f 0.57%, #a7265f 45.22%, #b22957 74.21%, #db333c 97%);
+
+  /* layout */
+  --content-max-width: 1216px;
+  --section-padding: 40px;
+  --nav-height: 64px;
+
+  /* heading sizes (desktop) */
+  --heading-size-xxl: 48px;
+  --heading-size-xl: 28px;
+  --heading-size-l: 24px;
+  --heading-size-m: 20px;
+  --heading-size-s: 18px;
+  --heading-size-xs: 16px;
+}
