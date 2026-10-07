@@ -47,6 +47,11 @@ function buildColumn(col, document) {
       a.textContent = el.textContent.replace(/\s+/g, ' ').trim();
       p.append(a);
       out.push(p);
+    } else if (/^h[4-6]$/.test(tag)) {
+      // source jumps h3 -> h5 ("Recent class actions:"); cap at h3 so heading order doesn't skip
+      const h3 = document.createElement('h3');
+      h3.innerHTML = el.innerHTML;
+      out.push(h3);
     } else {
       out.push(el);
     }

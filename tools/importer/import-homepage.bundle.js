@@ -126,16 +126,16 @@ var CustomImportScript = (() => {
       if (!icon && !title) return;
       const bodyCell = [];
       if (title) {
-        const h3 = document.createElement("h3");
+        const h2 = document.createElement("h2");
         if (link) {
           const a = document.createElement("a");
           a.href = link.getAttribute("href");
           a.textContent = title;
-          h3.append(a);
+          h2.append(a);
         } else {
-          h3.textContent = title;
+          h2.textContent = title;
         }
-        bodyCell.push(h3);
+        bodyCell.push(h2);
       } else if (link) {
         const p = document.createElement("p");
         const a = document.createElement("a");
@@ -302,6 +302,10 @@ var CustomImportScript = (() => {
         a.textContent = el.textContent.replace(/\s+/g, " ").trim();
         p.append(a);
         out.push(p);
+      } else if (/^h[4-6]$/.test(tag)) {
+        const h3 = document.createElement("h3");
+        h3.innerHTML = el.innerHTML;
+        out.push(h3);
       } else {
         out.push(el);
       }
@@ -640,6 +644,11 @@ var CustomImportScript = (() => {
         const outer = xf && xf.parentElement && xf.parentElement.closest(".experiencefragment");
         if (outer) xf = outer;
         (xf || el).remove();
+      });
+      element.querySelectorAll(".office-listing .left-container h4").forEach((h) => {
+        const p = element.ownerDocument.createElement("p");
+        p.innerHTML = h.innerHTML;
+        h.replaceWith(p);
       });
       element.querySelectorAll(".body-content > .container-wrapper > div > .aem-Grid > .aem-GridColumn").forEach((col) => {
         const hasText = col.textContent.replace(/\s+/g, "").length > 0;

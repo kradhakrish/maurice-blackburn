@@ -65,3 +65,19 @@
     gap: 24px;
   }
 }
+
+/* tile titles are h2 for heading order; sized as the source's small tile labels */
+.cards-icon-tile .cards-icon-tile-body h2 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.24px;
+}
+
+@media (width >= 900px) {
+  .cards-icon-tile .cards-icon-tile-body h2 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+}

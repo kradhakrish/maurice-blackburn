@@ -3,7 +3,8 @@
 /**
  * Parser for cards-icon-tile. Base: cards.
  * Source: https://www.mauriceblackburn.com.au/ (#serviceTile > .customPadding > .aem-Grid)
- * Output: one row per tile, 2 cells: [icon] | [h3 linked to the tile target].
+ * Output: one row per tile, 2 cells: [icon] | [h2 linked to the tile target].
+ * Titles are h2 (not the source h3) so the page heading order does not skip a level after the h1.
  * Iterates the block-level .icon-tile-body wrappers (6 tiles). The visually hidden
  * "Learn more" link supplies the tile href and is folded into the heading link.
  * Tiles inside the hidden #sellingPointContainer set are skipped.
@@ -24,16 +25,16 @@ export default function parse(element, { document }) {
 
     const bodyCell = [];
     if (title) {
-      const h3 = document.createElement('h3');
+      const h2 = document.createElement('h2');
       if (link) {
         const a = document.createElement('a');
         a.href = link.getAttribute('href');
         a.textContent = title;
-        h3.append(a);
+        h2.append(a);
       } else {
-        h3.textContent = title;
+        h2.textContent = title;
       }
-      bodyCell.push(h3);
+      bodyCell.push(h2);
     } else if (link) {
       const p = document.createElement('p');
       const a = document.createElement('a');

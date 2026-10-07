@@ -59,3 +59,19 @@
     min-width: 0;
   }
 }
+
+/* list heading ("Recent class actions:") is an h3 for heading order; keep its smaller size */
+.columns-stats .columns-stats-col h3:has(+ ul, + ol) {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+@media (width >= 900px) {
+  .columns-stats .columns-stats-col h3:has(+ ul, + ol) {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+  }
+}

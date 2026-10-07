@@ -53,6 +53,14 @@ export default function transform(hookName, element, payload) {
       (xf || el).remove();
     });
 
+    // "Office locations" is an eyebrow label authored as an h4 after an h2; as a heading it skips
+    // a level, so carry it over as a paragraph.
+    element.querySelectorAll('.office-listing .left-container h4').forEach((h) => {
+      const p = element.ownerDocument.createElement('p');
+      p.innerHTML = h.innerHTML;
+      h.replaceWith(p);
+    });
+
     // Empty spacer / empty embed columns directly in the body-content grid.
     element.querySelectorAll('.body-content > .container-wrapper > div > .aem-Grid > .aem-GridColumn').forEach((col) => {
       const hasText = col.textContent.replace(/\s+/g, '').length > 0;
