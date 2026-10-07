@@ -212,12 +212,9 @@ header .nav-group-overview {
   font-weight: 700;
 }
 
-header .nav-cta {
-  margin: 24px 0 0;
-}
-
-header .nav-cta a.button {
+header a.button.nav-cta {
   width: 100%;
+  margin-top: 24px;
 }
 
 /* search panel */
@@ -549,15 +546,8 @@ header .nav-overlay[hidden] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  header .nav-cta {
+  header a.button.nav-cta {
     margin: 0;
-  }
-
-  header .nav-cta p {
-    margin: 0;
-  }
-
-  header .nav-cta a.button {
     display: inline-block;
     position: relative;
     width: auto;

@@ -50,8 +50,9 @@ function classifySections(wrapper) {
 }
 
 function buildUtility(section) {
-  const bar = document.createElement('div');
+  const bar = document.createElement('nav');
   bar.className = 'nav-utility';
+  bar.setAttribute('aria-label', 'Utility');
   const search = { label: 'Search', placeholder: '', action: '/search/' };
 
   [...section.children].forEach((el) => {
@@ -237,7 +238,7 @@ function buildPanel(li, promo) {
 
 function buildSections(navSection, promos) {
   const ul = document.createElement('ul');
-  ul.className = 'nav-sections';
+  ul.className = 'nav-sections nav-list';
   const triggers = [];
   const promoFor = (label) => promos.find((p) => p.querySelector('h1, h2, h3').textContent.trim() === label);
 
@@ -277,6 +278,7 @@ export default async function decorate(block) {
 
   const nav = document.createElement('nav');
   nav.id = 'nav';
+  nav.className = 'nav-main';
   nav.setAttribute('aria-label', 'Main');
 
   const overlay = document.createElement('div');
@@ -284,16 +286,16 @@ export default async function decorate(block) {
   overlay.hidden = true;
 
   let search = null;
+  let utilityBar = null;
   if (utility) {
     const built = buildUtility(utility);
     search = buildSearch(built.search);
     const phone = built.bar.querySelector('.nav-phone');
     built.bar.insertBefore(search.toggle, phone);
-    nav.append(built.bar);
+    utilityBar = built.bar;
   }
 
-  const main = document.createElement('div');
-  main.className = 'nav-main';
+  const main = nav;
   if (brand) {
     brand.className = 'nav-brand';
     const logo = brand.querySelector('img');
@@ -323,13 +325,12 @@ export default async function decorate(block) {
     menu.append(built.ul);
   }
   if (cta) {
-    cta.className = 'nav-cta';
-    cta.querySelectorAll('strong, em').forEach((s) => s.replaceWith(...s.childNodes));
-    cta.querySelectorAll('a').forEach((a) => { a.className = 'button primary'; });
-    menu.append(cta);
+    cta.querySelectorAll('a').forEach((a) => {
+      a.className = 'button primary nav-cta';
+      menu.append(a);
+    });
   }
   main.append(menu, hamburger);
-  nav.append(main);
 
   const closePanels = (except) => {
     triggers.forEach((t) => {
@@ -403,6 +404,7 @@ export default async function decorate(block) {
 
   const wrapper = document.createElement('div');
   wrapper.className = 'nav-wrapper';
+  if (utilityBar) wrapper.append(utilityBar);
   wrapper.append(nav);
   if (search) wrapper.append(search.panel);
   // overlay sits outside the wrapper so it dims the page but not the header
