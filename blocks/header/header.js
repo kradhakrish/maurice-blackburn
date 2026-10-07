@@ -29,7 +29,7 @@ const itemLabel = (li) => {
  * @returns {Promise<Element|null>} wrapper whose children are the nav sections
  */
 async function fetchNav() {
-  let resp = await fetch('/content/nav.plain.html');
+  let resp = await fetch('/nav.plain.html');
   if (!resp.ok) resp = await fetch('/nav.plain.html');
   if (!resp.ok) return null;
   const wrapper = document.createElement('div');
