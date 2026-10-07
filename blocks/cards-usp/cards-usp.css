@@ -1,17 +1,30 @@
+.cards-usp-container .cards-usp-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.cards-usp {
+  border-bottom: 3px solid var(--brand-red);
+  background-color: var(--background-color);
+  color: var(--brand-plum);
+}
+
 .cards-usp > ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 28px;
+  box-sizing: border-box;
 }
 
 .cards-usp > ul > li {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
 }
 
 .cards-usp .cards-usp-icon {
@@ -21,27 +34,49 @@
 
 .cards-usp .cards-usp-icon img,
 .cards-usp .cards-usp-icon .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 
+.cards-usp .cards-usp-text,
 .cards-usp .cards-usp-text > * {
   margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
 }
 
 @media (width >= 600px) {
-  .cards-usp > ul {
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 16px 32px;
+  .cards-usp .cards-usp-icon img,
+  .cards-usp .cards-usp-icon .icon {
+    width: 24px;
+    height: 24px;
   }
 }
 
-@media (width >= 900px) {
+@media (width >= 992px) {
   .cards-usp > ul {
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
+    flex-direction: row;
+    gap: 36px;
+    padding: 8px 12px;
+  }
+
+  .cards-usp .cards-usp-text,
+  .cards-usp .cards-usp-text > * {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (width >= 1100px) {
+  .cards-usp > ul > li {
+    gap: 12px;
+  }
+
+  .cards-usp .cards-usp-icon img,
+  .cards-usp .cards-usp-icon .icon {
+    width: 32px;
+    height: 32px;
   }
 }

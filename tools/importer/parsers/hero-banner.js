@@ -3,15 +3,16 @@
 /**
  * Parser for hero-banner. Base: hero.
  * Source: https://www.mauriceblackburn.com.au/ (.cmp-page-banner > .cmp-page-banner-container)
- * Output: Row 1 = image (optional), Row 2 = [h1, subtitle, CTA].
- * Source has a desktop + mobile image and a desktop + mobile CTA duplicate - only the desktop
- * versions are kept.
+ * Output: Row 1 = [desktop image, optional mobile image] (optional), Row 2 = [h1, subtitle, CTA].
+ * Source has a desktop + mobile CTA duplicate - only the desktop CTA is kept.
  */
 export default function parse(element, { document }) {
   const heading = element.querySelector('.pb-title, h1, h2');
   const subtitle = element.querySelector('.pb-subtitle, .cmp-page-banner-content p');
   const image = element.querySelector('img.desktop-image')
     || element.querySelector('.image-container img, img.pb-image, img');
+  // Optional mobile art-direction image, authored after the desktop image in the same cell.
+  const mobileImage = element.querySelector('img.mobile-image');
 
   // CTA: desktop buttons first, fall back to any button set.
   const ctaContainer = element.querySelector('.pb-buttons--desktop')
@@ -49,7 +50,11 @@ export default function parse(element, { document }) {
   });
 
   const cells = [];
-  if (image) cells.push([image]);
+  if (image) {
+    const imageCell = [image];
+    if (mobileImage && mobileImage !== image && mobileImage.getAttribute('src')) imageCell.push(mobileImage);
+    cells.push([imageCell]);
+  }
   cells.push([contentCell]);
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'hero-banner', cells });
