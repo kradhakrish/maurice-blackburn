@@ -299,8 +299,6 @@ header .nav-overlay[hidden] {
     height: 38px;
     padding: 0 max(70px, calc((100% - 1440px) / 2 + 70px)) 0 0;
     border-bottom: 1px solid rgb(70 28 47 / 20%);
-    font-size: 12px;
-    line-height: 18px;
   }
 
   header .nav-utility-links {
@@ -309,11 +307,11 @@ header .nav-overlay[hidden] {
 
   header .nav-utility-links a:any-link,
   header .nav-search-toggle {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 0 16px;
+    display: block;
+    border: 2px solid transparent;
+    padding: 8px 16px;
+    font-size: 12px;
+    line-height: 18px;
   }
 
   header .nav-highlight {
@@ -355,8 +353,6 @@ header .nav-overlay[hidden] {
   header .nav-search-toggle {
     position: relative;
     padding-right: 48px;
-    font-size: 12px;
-    line-height: 18px;
   }
 
   header .nav-search-toggle::after {
@@ -380,6 +376,8 @@ header .nav-overlay[hidden] {
     gap: 6px;
     height: 100%;
     padding: 0 16px;
+    font-size: 12px;
+    line-height: 18px;
   }
 
   header .nav-phone img {
@@ -388,8 +386,9 @@ header .nav-overlay[hidden] {
   }
 
   header .nav-main {
-    height: 94px;
-    padding: 0 36px 0 52px;
+    height: auto;
+    padding: 15px 36px 15px 52px;
+    background-color: var(--background-color);
   }
 
   header .nav-brand img {
@@ -559,6 +558,8 @@ header .nav-overlay[hidden] {
   }
 
   header .nav-cta a.button {
+    display: inline-block;
+    position: relative;
     width: auto;
     padding: 14px 32px;
     font-family: var(--body-font-family);
