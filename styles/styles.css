@@ -39,6 +39,9 @@
 @font-face {
   font-family: poppins-fallback;
   size-adjust: 112.5%;
+  ascent-override: 93.3%;
+  descent-override: 31.1%;
+  line-gap-override: 8.9%;
   src: local('Arial');
 }
 
@@ -350,6 +353,11 @@ main .section.beige {
 
 main .section.lavender {
   background-color: var(--brand-lavender);
+}
+
+/* brand magenta is only 3.47:1 on lavender; use the darker shade for AA contrast */
+main .section.lavender a:any-link:not(.button) {
+  color: var(--brand-magenta-dark);
 }
 
 main .section.dark {

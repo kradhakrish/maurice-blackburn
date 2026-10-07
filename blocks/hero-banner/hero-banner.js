@@ -31,9 +31,11 @@ export default function decorate(block) {
         { width: '750' },
       ]);
       if (mobileImg) {
-        // art direction: the wide mobile crop below the desktop breakpoint
-        const mobileSources = createOptimizedPicture(mobileImg.src, mobileImg.alt, true, [
-          { media: '(max-width: 991px)', width: '1400' },
+        // art direction: the wide mobile crop below the desktop breakpoint. Built lazy so the
+        // helper's throwaway <img> is never fetched; only its <source> elements are kept.
+        const mobileSources = createOptimizedPicture(mobileImg.src, mobileImg.alt, false, [
+          { media: '(max-width: 991px)', width: '750' },
+          { width: '750' },
         ]).querySelectorAll('source[media]');
         picture.prepend(...mobileSources);
       }

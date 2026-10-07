@@ -77,17 +77,31 @@ export default function decorate(block) {
   const rows = [...block.children].filter((row) => row.textContent.trim() || row.querySelector('a, picture'));
   const panels = [];
   const buttons = [];
+  let current = 0;
+  // players load only once the block nears the viewport, so off-screen stories cost nothing
+  let nearViewport = !('IntersectionObserver' in window);
 
   const select = (index, focus = false) => {
+    current = index;
     panels.forEach((panel, i) => {
       // native `hidden` removes inactive panels from layout AND the accessibility tree
       panel.hidden = i !== index;
       buttons[i].setAttribute('aria-selected', i === index);
       buttons[i].tabIndex = i === index ? 0 : -1;
     });
-    loadVideo(panels[index]);
+    if (nearViewport) loadVideo(panels[index]);
     if (focus) buttons[index].focus();
   };
+
+  if (!nearViewport) {
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      observer.disconnect();
+      nearViewport = true;
+      if (panels[current]) loadVideo(panels[current]);
+    }, { rootMargin: '200px' });
+    observer.observe(block);
+  }
 
   rows.forEach((row, i) => {
     const cells = [...row.children];

@@ -13,6 +13,7 @@
   --brand-red: #da333b;
   --brand-red-hover: #b8262e;
   --brand-magenta: #cc2e57;
+  --brand-magenta-dark: #a8224a; /* magenta that meets 4.5:1 on lavender */
   --brand-lavender: #ded1d8;
   --brand-white: #fff;
   --brand-gradient: linear-gradient(90.79deg, #75264f 0.57%, #a7265f 45.22%, #b22957 74.21%, #db333c 97%);
